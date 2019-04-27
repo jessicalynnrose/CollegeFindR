@@ -1,1 +1,1 @@
-# FinalProjectR
+# CollegeFindR
