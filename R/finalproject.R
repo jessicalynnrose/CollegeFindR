@@ -12,6 +12,15 @@ library("ggplot2")
 
 collegedata <<- read_excel("collegedata.xlsx")
 
+#' survey
+#'
+#' runs all questions for survey and visualization function
+#'
+#' @param none
+#' 
+#' @return user prompts through each question
+#
+#' @export
 survey <- function () {
   region()
   size()
@@ -23,14 +32,15 @@ survey <- function () {
 }  
 
   
-#region
-#
-#subset by region of school
-#
-#@return subset of original data frame where only remaining are those within the user specified region
-#
-#@export
-#
+#' region
+#'
+#' subset by region of school
+#'
+#' @param none
+#' 
+#' @return subset of original data frame where only remaining are those within the user specified region
+#' 
+#' @export
 region <- function() {
   print("What region would you prefer to go to school in? 1. New England 2. Mid East 3. Great Lakes 4. Plains 5. Southeast 6. Southwest 7. Rocky Mountains 8. Far West 9. Outlying Areas 10. Doesn't matter")
   
@@ -63,14 +73,16 @@ region <- function() {
 
 }
 
-#size
-#
-#subset by school size
-#
-#@return a subset of the region dataframe where only data remaining is that of the specified school size
-#
-#@export
-#
+#' size
+#'
+#' subset by school size
+#'
+#' @param none
+#' 
+#' @return a subset of the region dataframe where only data remaining is that of the specified school size
+#'
+#' @export
+#'
 size <- function() {  
   print("What size school are you looking for? 1. Very Small 2. Small 3. Medium 4. Large 5. Doesn't matter")
   
@@ -96,14 +108,16 @@ size <- function() {
   }  
 } 
 
-#majority students
-#
-#subset by majority undergraduate/graduate students
-#
-#@return subset of size data frame where only remaining data is the specified type of student population
-#
-#@export
-#
+#' majority students
+#' 
+#' subset by majority undergraduate/graduate students
+#'
+#' @param none
+#'
+#' @return subset of size data frame where only remaining data is the specified type of student population
+#'
+#' @export
+#'
 majoritystudents <- function() {
   print("What type of students would you prefer? 1. Majority undergraduate 2. Majority graduate 3. Doesn't matter")
   
@@ -136,13 +150,15 @@ majoritystudents <- function() {
   
 }
 
-#price
-#
-#subset by price
-#
-#return a subset of majority students data frame only including schools within the specified price range
-#
-#@export
+#' price
+#'
+#' subset by price
+#'
+#' @param none
+#'
+#' @return a subset of majority students data frame only including schools within the specified price range
+#' 
+#' @export
 #
 price <- function() {
   
@@ -165,14 +181,16 @@ price <- function() {
 }
 
 
-#test score
-#
-#subset by test scores
-#
-#@return subset of price data frame only including schools where student score above midline on ACT or SAT
-#
-#@export
-#
+#' test score
+#' 
+#' subset by test scores
+#'
+#' @param none
+#' 
+#' @return subset of price data frame only including schools where student score above midline on ACT or SAT
+#'
+#' @export
+#'
 scores <- function() {
   print("Would you like to only show schools where your ACT & sAT score are above the midline? 1. ACT only 2. SAT only 3. Both 4. No")
   answer <<- readline(">>> ")
@@ -208,14 +226,16 @@ scores <- function() {
 
 }
 
-#results
-#
-#presents how many schools are left with the specified above criteria
-#
-#returns a character string
-#
-#@export
-#
+#' results
+#' 
+#' presents how many schools are left with the specified above criteria
+#'
+#' @param none
+#' 
+#' @return a character string
+#'
+#' @export
+#'
 results <- function() {
   if (nrow(scorelist) < 1) {
     print("I'm sorry, no schools match this search criteria. Please start over.")
@@ -228,26 +248,25 @@ results <- function() {
 }  
 
 
-#visualize  
-#  
-#visualize results
-#
-#returns a bar chart of results and a list of schools with their website that meet all of the above specified criteria
-#
-#@export
-#
+#' visualize  
+#'  
+#' visualize results
+#'
+#'
+#' @param none
+#' 
+#' @return a bar chart of results and a list of schools with their website that meet all of the above specified criteria
+#' 
+#' @export
+#'
 visualize <- function () {
   
 print("Here are your suggested schools!")
 
   
-#region results
-  
 ggplot(data=scorelist) + geom_bar(mapping=aes(x=STABBR, fill="#000099", colour="black")) + ggtitle("Distribution of Results by State") +
   theme(legend.position="none") + ylab("Number of Schools") + xlab("State")
 
-
-#prints table with name and website
 scorelist[,(c(1,4))]
 
   
