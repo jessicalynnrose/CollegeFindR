@@ -1,19 +1,8 @@
 Package: CollegeFindR
-
 Title: takes user input to suggest schools to consider from the college scorecard dataset (department of education)
-
 Version: 0.0.0.9000
-
 Date: 2019-04-29
-
-Author@R: Jessica Rose
-
-Maintainer: jlrose04[AT]gmail[DOT]com
-
-Description: Narrowing down what colleges a student should apply to can be a daunting task with thousands of
-universities to choose from. My package, CollegeFindR, uses the largest publically available dataset from the department of 
-education to present students with a list of schools meeting specific criteria they input. With each questions answered by the student, 
-the original list of over 6000 colleges can be narrowed down to a smaller, personalized grouping of schools and their corresponding
-websites to learn more information.
-
+Author: Jessica Rose
+Maintainer: Jessica Rose <jlrose04@gmail.com>
 License: GNU
+RoxygenNote: 6.1.1
