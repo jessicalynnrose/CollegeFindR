@@ -2,15 +2,13 @@
 ### The purpose of the program is to ask various questions and subset from the main dataset to help identify which colleges
 ### meet all of the interested students preferences such as location, size, student population and more.
 
-### Results include names of schools, the school's website and a couple different visualizations to show results.
+### Results include names of schools, the school's website and some visualizations to show results.
 
 
 library("readxl")
 library("taRifx")
 library("ggplot2")
 
-setwd("/Users/jess/Desktop")
-list.files()
 
 collegedata <<- read_excel("collegedata.xlsx")
 
@@ -200,25 +198,20 @@ visualize <- function () {
   
 print("Here are your suggested schools!")
 
-#region results
-ggplot(data=scorelist) + geom_bar(mapping=aes(x=STABBR))
-
-#size results
-
-
-#majoritystudents results
-
-
-#price results
-
   
-#scores results
+#region results
+  
+ggplot(data=scorelist) + geom_bar(mapping=aes(x=STABBR, fill="#000099", colour="black")) + ggtitle("Distribution of Results by State") +
+  theme(legend.position="none") + ylab("Number of Schools") + xlab("State")
 
 
 #prints table with name and website
+scorelist[,(c(1,4))]
 
   
 }
+
+
 
 survey()
 
